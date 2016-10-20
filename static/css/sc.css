@@ -1,7 +1,6 @@
 body
-{display: flex; flex-direction: column;
-
-    margin: 0;  padding: 0;  background-color: #f8f6f2;
+{
+    font-family: 'Verdana', Georgia, 'Microsoft YaHei', '微软雅黑', STXihei, '华文细黑', serif;  display: flex; flex-direction: column;  margin: 0;  padding: 0;  background-color: #f8f6f2;
 }
 
 #sc-footer,
@@ -26,9 +25,8 @@ body
 }
 
 #sc-body
-{flex: 1;
-
-    padding: 10px;
+{
+    flex: 1;  width: 700px;  padding: 10px;  align-self: center;
 }
 
 .sc-block
