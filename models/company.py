@@ -2,13 +2,13 @@ from . import ModelMixin
 from . import db
 from . import timestamp
 
-def Company(db.Model, ModelMixin):
+class Company(db.Model, ModelMixin):
     __tablename__ = 'companies'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Interger)
-    logo_path = db.Column(db.Interger)
+    name = db.Column(db.String())
+    logo_path = db.Column(db.String())
 
-    lessons = db.Relationship('Lesson', backref='company')
+    lessons = db.relationship('Lesson', backref='company')
 
     def __init__(self, form):
         self.name = form.get('name', '')

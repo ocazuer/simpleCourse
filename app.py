@@ -6,7 +6,8 @@ from flask_script import Manager
 
 from models import db
 from models.company import Company
-from models.lessonpoint import Lessonpoint
+from models.lesson import Lesson
+from models.point import Point
 from models.user import User
 
 app = Flask(__name__)
@@ -15,7 +16,8 @@ manager = Manager(app)
 
 
 def register_routes(app):
-    app.register_blueprint('')
+    # app.register_blueprint('')
+    pass
 
 
 def configure_app():

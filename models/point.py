@@ -2,14 +2,14 @@ from . import ModelMixin
 from . import db
 from . import timestamp
 
-def Point(db.Model, ModelMixin):
+class Point(db.Model, ModelMixin):
     __tablename__ = 'points'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Interger)
-    target = db.Column(db.Interger)
-    content = db.Column(db.Interger)
+    name = db.Column(db.String())
+    target = db.Column(db.String())
+    content = db.Column(db.String())
 
-    lesson_id = db.Column(db.Interger, db.ForeignKey='lesson.id')
+    lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
 
     def __init__(self, form):
         self.username = form.get('username', '')
