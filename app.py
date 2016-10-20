@@ -10,14 +10,19 @@ from models.lesson import Lesson
 from models.point import Point
 from models.user import User
 
+from routes.index import main as route_index
+from routes.user import main as route_user
+from routes.lesson import main as route_lesson
+
 app = Flask(__name__)
 db_path = 'simplecourse.sqlite'
 manager = Manager(app)
 
 
 def register_routes(app):
-    # app.register_blueprint('')
-    pass
+    app.register_blueprint('route_index', url_prefix='/')
+    app.register_blueprint('route_user', url_prefix='/user')
+    app.register_blueprint('route_lesson', url_prefix='/lesson')
 
 
 def configure_app():
