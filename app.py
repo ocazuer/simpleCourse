@@ -5,6 +5,9 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
 from models import db
+from models.company import Company
+from models.lessonpoint import Lessonpoint
+from models.user import User
 
 app = Flask(__name__)
 db_path = 'simplecourse.sqlite'
@@ -12,7 +15,7 @@ manager = Manager(app)
 
 
 def register_routes(app):
-    pass
+    app.register_blueprint('')
 
 
 def configure_app():
