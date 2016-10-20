@@ -7,5 +7,5 @@ main = Blueprint('index', __name__)
 
 @main.route('/')
 def index():
-    ms = Model.query.all()
-    return render_template('user_index.html')
+    # ms = Model.query.all()
+    return render_template('index.html')

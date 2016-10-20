@@ -20,9 +20,9 @@ manager = Manager(app)
 
 
 def register_routes(app):
-    app.register_blueprint('route_index', url_prefix='/')
-    app.register_blueprint('route_user', url_prefix='/user')
-    app.register_blueprint('route_lesson', url_prefix='/lesson')
+    app.register_blueprint(route_index, url_prefix='/')
+    app.register_blueprint(route_user, url_prefix='/user')
+    app.register_blueprint(route_lesson, url_prefix='/lesson')
 
 
 def configure_app():
