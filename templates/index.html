@@ -4,5 +4,28 @@
 </header>
 <body>
     欢迎来到课程手册学习中心
+    <br>
+    <a href="/lesson/new">点我去写一篇新 lesson</a>
+    <br>
+    下面是本网站所有的 lesson：
+    <br>
+
+
+    {% for lesson in lessons %}
+        name = {{ lesson.name }}
+        <br>
+        company_id = {{ lesson.company_id }}
+        <br>
+        {% for point in lesson.points %}
+            <br>
+            name      = {{ point.name }}
+            target    = {{ point.target }}
+            content   = {{ point.content }}
+            lesson_id = {{ point.lesson_id }}
+            <br>
+        {% endfor %}
+        <br>
+    {% endfor %}
+
 </body>
 </html>
