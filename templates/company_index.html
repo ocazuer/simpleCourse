@@ -10,13 +10,13 @@
             <form class="sc-cell" action="/company/add" method="POST">
                 <input name="name" placeholder="公司名称">
                 <input name="logo_path" placeholder="公司 logo 链接">
-                <button type="submit">创建新公司</button>
+                <button type="submit">注册新公司</button>
             </form>
         <!--</div>-->
     </div>
 
     <div class="sc-block">
-        <div class="sc-block-title">以下是所有在本网站注册过的公司</div>
+        <div class="sc-block-title">这些公司也在使用我们的产品</div>
         {% for  company in companies %}
         <div class="sc-cell">
             {{ company.name }}

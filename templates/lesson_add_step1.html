@@ -6,8 +6,15 @@
     <h2>增加新的 lesson(增加 lesson 名称)：</h2>
     <br>
     <form action="/lesson/add" method="POST">
-        <input name="name">
+        <input name="name" placeholder="课程名称">
+        <select name="company_id" >
+            {% for company in companies %}
+            <option name="company_id" value={{ company.id }}>{{ company.name }}</option>
+            {% endfor %}
+        </select>
+
         <button type="submit">提交 lesson </button>
+
     </form>
 </body>
 </html>

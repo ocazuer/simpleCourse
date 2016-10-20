@@ -1,4 +1,5 @@
 from models.lesson import Lesson
+from models.company import Company
 from models.point import Point
 from routes import *
 
@@ -10,18 +11,19 @@ main = Blueprint('lesson', __name__)
 @main.route('/')
 def index():
     ms = Model.query.all()
-    return render_template('lesson_index.html')
+    return render_template('lesson_index.html', user=current_user())
 
 
 @main.route('/<int:id>')
 def show(id):
     m = Model.query.get(id)
-    return render_template('lesson.html')
+    return render_template('lesson.html', user=current_user())
 
 
 @main.route('/new')
 def write_lesson():
-    return render_template('lesson_add_step1.html')
+    cs = Company.query.all()
+    return render_template('lesson_add_step1.html', companies=cs, user=current_user())
 
 
 @main.route('/add', methods=['POST'])
@@ -34,7 +36,7 @@ def add_lesson():
 
 @main.route('/point/new/<int:lesson_id>')
 def write_point(lesson_id):
-    return render_template('lesson_add_step2.html', lesson_id=lesson_id)
+    return render_template('lesson_add_step2.html', lesson_id=lesson_id, user=current_user())
 
 
 @main.route('/point/add/<int:lesson_id>', methods=['POST'])
