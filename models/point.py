@@ -12,6 +12,7 @@ class Point(db.Model, ModelMixin):
     lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
 
     def __init__(self, form):
-        self.username = form.get('username', '')
+        self.name = form.get('name', '')
         self.target = form.get('target', '')
         self.content = form.get('content', '')
+        self.lesson_id = form.get('lesson_id', '')

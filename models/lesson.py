@@ -11,6 +11,5 @@ class Lesson(db.Model, ModelMixin):
     points = db.relationship('Point', backref='lesson')
 
     def __init__(self, form):
-        self.username = form.get('username', '')
-        self.target = form.get('target', '')
-        self.content = form.get('content', '')
+        self.name = form.get('name', '')
+

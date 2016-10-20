@@ -1,0 +1,24 @@
+<html>
+<header>
+    <title>所有课程</title>
+</header>
+<body>
+    <h2>增加新的 lesson(增加 point)：</h2>
+
+    <form action="/lesson/point/add/{{ lesson_id }}" method="POST">
+        <input type="hidden" name="lesson_id" value="{{ lesson_id }}">
+        <br>
+        <input placeholder="输入 point 的 name" name="name">
+        <br>
+        <input placeholder="输入 point 的 target" name="target">
+        <br>
+        <textarea placeholder="输入 point 的 content" name="content"></textarea>
+        <br>
+        <button type="submit">我要再写一个 point </button>
+    </form>
+
+    <a href="/">
+        <button type="submit">我不想写了，点我回到首页（当前数据不会被保存） </button>
+    </a>
+</body>
+</html>
