@@ -1,0 +1,23 @@
+<html>
+<header>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/sc.css">
+</header>
+<body>
+    <div id="sc-top">
+        <div>
+            <a href="/">主页</a>
+        </div>
+        <div>
+            <a href="/user/login">登录</a>
+            <a href="/user/signup">注册</a>
+        </div>
+    </div>
+    <div id="sc-body">
+        {% block body %}{% endblock %}
+    </div>
+    <div id="sc-footer">
+        <span>2016 至宝 ocazuer</span>
+    </div>
+</body>
+</html>

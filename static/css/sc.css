@@ -1,0 +1,35 @@
+body {
+    background-color: lightgray;
+    margin: 0px;
+    padding: 0px;
+}
+
+#sc-footer, #sc-top {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#sc-top {
+    justify-content: space-between;
+}
+
+#sc-top a {
+    text-decoration: none;
+    color: black;
+}
+
+#sc-footer {
+    justify-content: center;
+}
+
+#sc-body {
+    background-color: white;
+    padding: 10px;
+}
+
+
+

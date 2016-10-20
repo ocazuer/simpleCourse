@@ -1,8 +1,10 @@
-<html>
-<header>
-    <title>主页</title>
-</header>
-<body>
+{% extends "base.html" %}
+
+{% block title %}
+    主页
+{% endblock %}
+
+{% block body %}
     欢迎来到课程手册学习中心
     <br>
     <a href="/lesson/new">点我去写一篇新 lesson</a>
@@ -12,20 +14,26 @@
 
 
     {% for lesson in lessons %}
-        name = {{ lesson.name }}
-        <br>
-        company_id = {{ lesson.company_id }}
-        <br>
-        {% for point in lesson.points %}
-            <br>
-            name      = {{ point.name }}
-            target    = {{ point.target }}
-            content   = {{ point.content }}
-            lesson_id = {{ point.lesson_id }}
-            <br>
-        {% endfor %}
-        <br>
+        <ul>
+            <li>
+                <a href="/lesson/{{ lesson.id }}">
+                    {{ lesson.name }}
+                    来自
+                    {{ lesson.company_id }}
+                    <br>
+                    {#
+                    {% for point in lesson.points %}
+                        <br>
+                        name      = {{ point.name }}
+                        target    = {{ point.target }}
+                        content   = {{ point.content }}
+                        lesson_id = {{ point.lesson_id }}
+                        <br>
+                    {% endfor %}
+                    #}
+                </a>
+            </li>
+        </ul>
     {% endfor %}
 
-</body>
-</html>
+{% endblock %}
