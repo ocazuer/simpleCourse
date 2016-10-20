@@ -1,5 +1,6 @@
 body
-{
+{display: flex; flex-direction: column;
+
     margin: 0;  padding: 0;  background-color: #f8f6f2;
 }
 
@@ -25,7 +26,8 @@ body
 }
 
 #sc-body
-{
+{flex: 1;
+
     padding: 10px;
 }
 
