@@ -13,6 +13,9 @@ def current_user():
         return u
     return None
 
+def sava_session(user_id):
+    session['user_id'] = user_id
+
 
 @main.route('/')
 def index():
@@ -24,12 +27,12 @@ def index():
 def add():
     form = request.form
     m = Model(form)
-
     if m.validate_register():
         m.save()
-        return render_template('smg.html')
+        sava_session(m.id)
+        return redirect(url_for('index.index'))
     else:
-        return render_template('smg.html')
+        return redirect(url_for('.signup'))
 
 
 @main.route('/delete/<id>')
@@ -42,14 +45,14 @@ def delete(id):
 @main.route('/verification_login', methods=['POST'])
 def verification_login():
     form = request.form
-    u = Model(form)
-    user = User.query.filter_by(username=u.username).first()
-    if user is not None and user.validate_login(u):
-        print('登录成功')
-        session['user_id'] = user.id
+    u1 = Model(form)
+    u2 = User.query.filter_by(username=u1.username).first()
+    if u2 is not None and u2.validate_login(u1):
+        sava_session(u2.id)
+        return redirect(url_for('index.index'))
     else:
         print('登录失败')
-    return redirect(url_for('index.index'))
+        return redirect(url_for('.login'))
 
 
 @main.route('/login')

@@ -9,7 +9,7 @@ Model = Company
 @main.route('/')
 def index():
     ms = Model.query.all()
-    return render_template('company_index.html', companies=ms)
+    return render_template('company_index.html', companies=ms, user=current_user())
 
 
 @main.route('/add', methods=['POST'])

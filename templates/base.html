@@ -9,9 +9,15 @@
             <a href="/">主页</a>
         </div>
         <div>
+        {% if user != None %}
+            <a href="/company">公司</a>
+            <a >{{ user.username }}</a>
+            <a href="/user/logout">登出</a>
+        {% else %}
             <a href="/company">公司</a>
             <a href="/user/login">登录</a>
             <a href="/user/signup">注册</a>
+        {% endif %}
         </div>
     </div>
     <div id="sc-body">

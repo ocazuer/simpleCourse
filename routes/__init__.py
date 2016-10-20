@@ -10,4 +10,4 @@ from flask import abort
 
 from functools import wraps
 
-# from .user import current_user
+from .user import current_user
