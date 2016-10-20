@@ -8,6 +8,8 @@ def Company(db.Model, ModelMixin):
     name = db.Column(db.Interger)
     logo_path = db.Column(db.Interger)
 
+    lessons = db.Relationship('Lesson', backref='company')
+
     def __init__(self, form):
         self.name = form.get('name', '')
         self.logo_path = form.get('logo_path', '')
