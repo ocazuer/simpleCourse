@@ -6,22 +6,22 @@
 
 {% block body %}
     <div class="sc-block">
-        <form action="/company/add" method="POST">
-            <input name="name" placeholder="公司名称">
-            <input name="logo_path" placeholder="公司 logo 的链接">
-            <button type="submit">创建新公司</button>
-        </form>
+        <!--<div class="sc-cell">-->
+            <form class="sc-cell" action="/company/add" method="POST">
+                <input name="name" placeholder="公司名称">
+                <input name="logo_path" placeholder="公司 logo 链接">
+                <button type="submit">创建新公司</button>
+            </form>
+        <!--</div>-->
     </div>
 
     <div class="sc-block">
-         以下是所有在本网站注册过的公司
-         <ul>
-            {% for  company in companies %}
-            <li>
-                {{ company.name }}
-                <img class="img-sc-list" src="{{ company.logo_path }}">
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="sc-block-title">以下是所有在本网站注册过的公司</div>
+        {% for  company in companies %}
+        <div class="sc-cell">
+            {{ company.name }}
+            <img class="img-sc-list" src="{{ company.logo_path }}">
+        </div>
+        {% endfor %}
     </div>
 {% endblock %}
