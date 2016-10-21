@@ -4,9 +4,27 @@
     课程
 {% endblock %}
 
+{% block js %}
+    function disp_alert(){
+
+
+        console.log("{{ user.username }}")
+        if ("{{ user.username }}" == "") {
+            alert("请先登录")
+        } else {
+            window.location.href="/lesson/pdfprinter?id={{ lesson.id }}"
+        }
+
+
+    }
+{% endblock %}
+
 {% block body %}
     <div class="sc-block">
-        <div class="sc-block-title">以下是这个课程 <a href="/lesson/{{ lesson.id }}/pdfprinter">下载 PDF</a></div>
+        <div class="sc-block-title">
+            以下是这个课程
+            <button onclick="disp_alert()">下载 PDF</button>
+        </div>
         <div class="sc-cell sc-paper sc-cover">
             <div class="sc-cover-border sc-cover-border-1"></div>
             <div class="sc-cover-border sc-cover-border-2"></div>
@@ -22,14 +40,16 @@
             <div class="sc-paper-info">
                 <div class="sc-paper-info-title-wrapper">
                     <div>公司：<span class="sc-paper-underline">{{ company.name }}</span></div>
-                    <div>姓名：<span class="sc-paper-underline">{{ company.name }} daasdsad</span></div>
+                     {% set username = user.username %}
+                    <div>姓名：<span class="sc-paper-underline">{{ user.username }}</span></div>
+                    comment: {% if user is none %}user is none{% else %}user is OK{% endif %}
                 </div>
             </div>
         </div>
-        {% for point in lesson.points %}
+        {% for point in points %}
         <div class="sc-cell sc-paper">
             <div class="sc-point-title">
-                {{ point.name }}
+                {{ point.name }}dadasdasdasdas
             </div>
             <div class="sc-point-target">
                 {{ point.target }}

@@ -1,6 +1,7 @@
 from models.lesson import Lesson
 from models.company import Company
 from models.point import Point
+from models.user import User
 from routes import *
 
 from flask_weasyprint import HTML, render_pdf
@@ -18,15 +19,19 @@ def index():
 
 @main.route('/<int:id>')
 def show(id):
-    m = Model.query.get(id)
-    points = m.get_points_by_updated_time()
-    c = Company.query.get(m.company_id)
-    return render_template('lesson.html', lesson=m, company=c, user=current_user())
+    lesson = Lesson.query.get(id)
+    points = lesson.get_points_by_updated_time()
+    company = Company.query.get(lesson.company_id)
+    user = current_user()
+    return render_template('lesson.html', lesson=lesson, points=points, company=company, user=user)
 
-@main.route('/<int:id>/pdfprinter')
-def pdfprinter(id):
-    id = id
-    filename = 'test' + str(id) + '.pdf'
+@main.route('/pdfprinter')
+def pdfprinter():
+
+    ar = request.args
+    id = ar['id']
+
+    # filename = 'test' + str(id) + '.pdf'
     # url = 'http://www.ocazuer.com/lesson/8'
     # HTML(url).write_pdf('static/pdf/{}'.format(filename))
     # return redirect(url_for('.show', id=id))
