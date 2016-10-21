@@ -19,8 +19,9 @@
                 <a href="/lesson/{{ lesson.id }}">
                     {{ lesson.name }}
                     来自
-                    {{ lesson.company_id }}
-                    <br>
+
+                    <!--lesson.company_id {{ lesson.company_id }} <br>-->
+                    {{ Company.query.filter_by(id=lesson.company_id).first().name }}
                     {#
                     {% for point in lesson.points %}
                         <br>

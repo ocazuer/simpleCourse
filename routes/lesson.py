@@ -17,7 +17,8 @@ def index():
 @main.route('/<int:id>')
 def show(id):
     m = Model.query.get(id)
-    return render_template('lesson.html', user=current_user())
+    c = Company.query.get(m.company_id)
+    return render_template('lesson.html', lesson=m, company=c, user=current_user())
 
 
 @main.route('/new')

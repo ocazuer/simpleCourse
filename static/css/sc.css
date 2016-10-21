@@ -1,6 +1,6 @@
 body
 {
-    font-family: 'Verdana', Georgia, 'Microsoft YaHei', '微软雅黑', STXihei, '华文细黑', serif;  display: flex; flex-direction: column;  margin: 0;  padding: 0;  background-color: #f8f6f2;
+    font-family: 'Verdana', Georgia, 'Microsoft YaHei', '微软雅黑', STXihei, '华文细黑', serif;  display: flex;  flex-direction: column;  margin: 0;  padding: 0;  background-color: #f8f6f2;
 }
 
 #sc-footer,
@@ -44,7 +44,81 @@ body
     margin: 8px 10px;  padding: 10px;  color: black;  border-radius: 1px;  background-color: white;  box-shadow: rgba(0, 0, 0, .117647) 0 1px 1px;
 }
 
+.sc-paper
+{
+    position: relative;  display: flex;  flex-direction: column;  -moz-box-sizing: border-box;
+      box-sizing: border-box;  width: 500px;  min-height: 700px;  margin-right: auto;  margin-left: auto;
+}
+
+.sc-cover
+{
+    border: green solid 3px;  justify-content: space-around;  align-items: center;
+}
+
+.sc-cover-border-1,
+.sc-cover-border-2,
+.sc-cover-border-3,
+.sc-cover-border-4
+{
+    position: absolute;  right: 0;  bottom: 0;  width: 20px;  height: 20px;  background-color: green;
+}
+
+.sc-cover-border-1
+{
+    right: 0;  bottom: 0;
+}
+
+.sc-cover-border-2
+{
+    bottom: 0;  left: 0;
+}
+
+.sc-cover-border-3
+{
+    top: 0;  right: 0;
+}
+
+.sc-cover-border-4
+{
+    top: 0;  left: 0;
+}
+
+.sc-paper-logo
+{
+    position: absolute;  top: 30px;  right: 30px;
+}
+
+.sc-paper-title
+{
+    position: relative;  display: block;  margin-right: auto;  margin-left: auto;  text-align: center;
+}
+
+.sc-paper-lessontitle
+{
+    font-size: 40px;
+}
+
+.sc-paper-subtitle
+{
+    position: relative;  text-align: right;
+}
+
+.sc-paper-underline
+{
+    text-decoration: underline;
+}
+
 .img-sc-list
 {
     max-width: 60px;  max-height: 60px;
+}
+
+.img-cover
+{
+    max-width: 60px;  max-height: 60px;
+}
+
+.sc-point-title
+{
+    font-size: 22px;  font-weight: bold;
 }
