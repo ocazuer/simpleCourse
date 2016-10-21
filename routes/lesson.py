@@ -19,6 +19,7 @@ def index():
 @main.route('/<int:id>')
 def show(id):
     m = Model.query.get(id)
+    points = m.get_points_by_updated_time()
     c = Company.query.get(m.company_id)
     return render_template('lesson.html', lesson=m, company=c, user=current_user())
 
