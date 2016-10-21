@@ -1,4 +1,4 @@
-*.sqlite
+
 migrations/
 DS_store
 __pycache__/
