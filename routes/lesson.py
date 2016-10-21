@@ -18,6 +18,8 @@ def index():
 def show(id):
     m = Model.query.get(id)
     c = Company.query.get(m.company_id)
+    from weasyprint import HTML
+    HTML('http://weasyprint.org/').write_pdf('static/pdf/weasyprint-website.pdf')
     return render_template('lesson.html', lesson=m, company=c, user=current_user())
 
 
