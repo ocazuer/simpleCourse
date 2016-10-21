@@ -3,6 +3,8 @@ from models.company import Company
 from models.point import Point
 from routes import *
 
+from flask_weasyprint import HTML, render_pdf
+
 Model = Lesson
 
 main = Blueprint('lesson', __name__)
@@ -18,10 +20,18 @@ def index():
 def show(id):
     m = Model.query.get(id)
     c = Company.query.get(m.company_id)
-    from weasyprint import HTML
-    HTML('http://weasyprint.org/').write_pdf('static/pdf/weasyprint-website.pdf')
     return render_template('lesson.html', lesson=m, company=c, user=current_user())
 
+@main.route('/<int:id>/pdfprinter')
+def pdfprinter(id):
+    id = id
+    filename = 'test' + str(id) + '.pdf'
+    # url = 'http://www.ocazuer.com/lesson/8'
+    # HTML(url).write_pdf('static/pdf/{}'.format(filename))
+    # return redirect(url_for('.show', id=id))
+
+    # Make a PDF from another view
+    return render_pdf(url_for('.show', id=id))
 
 @main.route('/new')
 def write_lesson():
