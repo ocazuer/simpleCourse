@@ -1,5 +1,8 @@
 from models.user import User
 from routes import *
+import hashlib
+from models.user import hash_md5
+
 
 Model = User
 
@@ -9,35 +12,42 @@ main = Blueprint('user', __name__)
 def current_user():
     uid = session.get('user_id')
     if uid is not None:
-        u = User.query.get(uid)
+        u = User.objects.get(id=uid)
+        print('debug', u.id, u.username)
         return u
     return None
 
 def sava_session(user_id):
+    user_id = str(user_id)
     session['user_id'] = user_id
 
 
 @main.route('/')
 def index():
-    ms = Model.query.all()
+    ms = Model.objects
     return render_template('smg.html')
 
 
 @main.route('/add', methods=['POST'])
 def add():
     form = request.form
-    m = Model(form)
+    d = dict(
+        username = form.get('username', ''),
+        password = hash_md5(form.get('password', ''))
+    )
+    m = Model(**d)
+    # m.save()
     if m.validate_register():
         m.save()
         sava_session(m.id)
         return redirect(url_for('index.index'))
-    else:
-        return redirect(url_for('.signup'))
+    # else:
+    #     return redirect(url_for('.signup'))
 
 
 @main.route('/delete/<id>')
 def delete(id):
-    m = Model.query.filter_by(id=id).first()
+    m = Model.objects(id=id)
     m.delete()
     return render_template('smg.html')
 
@@ -46,7 +56,7 @@ def delete(id):
 def verification_login():
     form = request.form
     u1 = Model(form)
-    u2 = User.query.filter_by(username=u1.username).first()
+    u2 = User.objects(username=u1.username).first()
     if u2 is not None and u2.validate_login(u1):
         sava_session(u2.id)
         return redirect(url_for('index.index'))

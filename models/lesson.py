@@ -1,21 +1,25 @@
-from . import ModelMixin
-from . import db
-from . import timestamp
-from models.company import Company
-# from functools import cmp_to_key
+from . import *
+from models.point import Point
 from operator import itemgetter, attrgetter
 
-class Lesson(db.Model, ModelMixin):
-    __tablename__ = 'lessons'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String())
+class Lesson(db.Document):
+    # __tablename__ = 'lessons'
+    # id = db.Column(db.Integer, primary_key=True)
+    # name = db.Column(db.String())
+    # company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
+    # points = db.relationship('Point', backref='lesson')
 
-    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
-    points = db.relationship('Point', backref='lesson')
+    name = db.StringField()
+    points = db.ListField(ReferenceField(Point))
 
-    def __init__(self, form):
-        self.name = form.get('name', '')
-        self.company_id = form.get('company_id', '')
+    # def __init__(self, form):
+    #     self.name = form.get('name', '')
+    #     self.save()
+
+    def insert_point(self, point):
+        self.save()
+        self.update(add_to_set__points=[point])
+        self.save()
 
     def get_points_by_updated_time(self):
         points = self.points

@@ -3,6 +3,8 @@ import sys
 from flask import Flask
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
+# from flask.ext.mongoalchemy import MongoAlchemy
+from flask_mongoengine import MongoEngine
 
 from models import db
 from models.company import Company
@@ -16,7 +18,7 @@ from routes.lesson import main as route_lesson
 from routes.company import main as route_company
 
 app = Flask(__name__)
-db_path = 'simplecourse.sqlite'
+# db_path = 'simplecourse.sqlite'
 manager = Manager(app)
 
 
@@ -28,12 +30,10 @@ def register_routes(app):
 
 
 def configure_app():
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-    app.secret_key = 'secret key'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
-    db.init_app(app)
+    app.config['SECRET_KEY'] = 'flask+mongoengine=<3'
+    # db = MongoAlchemy(app)
     register_routes(app)
-
+    db = MongoEngine(app)
 
 def configured_app():
     configure_app()

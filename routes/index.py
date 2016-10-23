@@ -7,5 +7,5 @@ main = Blueprint('index', __name__)
 
 @main.route('/')
 def index():
-    lessons = Lesson.query.all()
+    lessons = Lesson.objects
     return render_template('index.html', lessons=lessons, Company=Company, user=current_user())
