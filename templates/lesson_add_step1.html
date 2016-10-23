@@ -1,20 +1,28 @@
-<html>
-<header>
-    <title>所有课程</title>
-</header>
-<body>
-    <h2>增加新的 lesson(增加 lesson 名称)：</h2>
-    <br>
-    <form action="/lesson/add" method="POST">
-        <input name="name" placeholder="课程名称">
-        <select name="company_id" >
-            {% for company in companies %}
-            <option name="company_id" value={{ company.id }}>{{ company.name }}</option>
-            {% endfor %}
-        </select>
+{% extends "base.html" %}
 
-        <button type="submit">提交 lesson </button>
+{% block title %}
+    添加新课程
+{% endblock %}
 
-    </form>
-</body>
-</html>
+{% block body %}
+<div class="sc-block">
+    <div class="sc-block-title">
+        增加新的 lesson(增加 lesson 名称)：
+    </div>
+    <div class="sc-cell">
+
+        <form action="/lesson/add" method="POST">
+            <input name="name" placeholder="课程名称">
+            <select name="company_id" >
+                {% for company in companies %}
+                <option name="company_id" value={{ company.id }}>{{ company.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">提交 lesson </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

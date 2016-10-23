@@ -5,23 +5,29 @@
 {% endblock %}
 
 {% block body %}
+<div class="sc-block">
+    <div class="sc-block-title">
     欢迎来到课程手册学习中心
-    <br>
-    <a href="/lesson/new">点我去写一篇新 lesson</a>
-    <br>
-    下面是本网站所有的 lesson：
-    <br>
-
-
+    </div>
+    <div class="sc-cell">
+        <a href="/lesson/new">点我去写一篇新 lesson</a>
+    </div>
+</div>
+<div class="sc-block">
+    <div class="sc-block-title">
+    下面是本网站所有的 lessons：
+    </div>
+    <div class="sc-cell">
     {% for lesson in lessons %}
         <ul>
             <li>
                 <a href="/lesson/{{ lesson.id }}">
                     {{ lesson.name }}
-                    {{ lesson.id }}
                 </a>
             </li>
         </ul>
     {% endfor %}
+    </div>
+</div>
 
 {% endblock %}

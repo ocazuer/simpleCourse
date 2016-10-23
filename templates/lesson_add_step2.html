@@ -1,9 +1,16 @@
-<html>
-<header>
-    <title>所有课程</title>
-</header>
-<body>
-    <h2>增加新的 lesson(增加 point)：</h2>
+
+{% extends "base.html" %}
+
+{% block title %}
+    添加新课程
+{% endblock %}
+
+{% block body %}
+<div class="sc-block">
+    <div class="sc-block-title">
+        增加新的 lesson(增加 point)：
+    </div>
+    <div class="sc-cell">
 
     <form action="/lesson/point/add/{{ lesson_id }}" method="POST">
         <input type="hidden" name="lesson_id" value="{{ lesson_id }}">
@@ -20,5 +27,8 @@
     <a href="/">
         <button type="submit">我不想写了，点我回到首页（当前数据不会被保存） </button>
     </a>
-</body>
-</html>
+
+    </div>
+</div>
+
+{% endblock %}
