@@ -45,3 +45,15 @@ Ignored `justify-content: space-between` at 21:5, unknown property.
 - 上传 logo
 - 给学习点添加复杂的排版功能，如居中
 - 将生成的 PDF 文件储存起来，减少重复运算
+
+# 依赖
+
+安装 mongodb
+
+```
+pip3 install flask flask_migrate flask_mongoengine
+```
+安装 WeasyPrint
+```
+ pip3 install flask-WeasyPrint
+```
