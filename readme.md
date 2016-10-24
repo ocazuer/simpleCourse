@@ -40,6 +40,16 @@ Ignored `justify-content: space-between` at 21:5, unknown property.
 
 2. ~~生成的 pdf 文件会在特定缩放倍率下出现细边框~~（已解决）
 
+3. ~~linux 服务器上无法生成 pdf~~（已解决）
+
+    https://github.com/Kozea/WeasyPrint/issues/353
+    have just upgraded html5lib to 1.05b8
+    You mean 1.0b8, right?
+
+    WeasyPrint 0.31 needs at least html5lib-1.0b9, aka html5lib-0.999999999. Please update html5lib to the latest release.
+
+4. ~~linux 服务器上生成的 pdf 中文字符乱码~~（已解决）
+
 #一些未来可以实现的功能
 - 修改课程的功能
 - 上传 logo
